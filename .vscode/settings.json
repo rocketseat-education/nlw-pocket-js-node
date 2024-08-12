@@ -1,0 +1,10 @@
+{
+  "dotenv.enableAutocloaking": false,
+  "cSpell.words": [
+    "paralleldrive"
+  ],
+  "editor.formatOnSave": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
+}

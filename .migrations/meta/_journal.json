@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1723467143098,
+      "tag": "0000_open_grim_reaper",
+      "breakpoints": true
+    }
+  ]
+}
