@@ -3,17 +3,16 @@ import { goalCompletions, goals } from '@/db/schema'
 import dayjs from 'dayjs'
 import weekOfYear from 'dayjs/plugin/weekOfYear'
 import { eq, sql, and } from 'drizzle-orm'
-import { z } from 'zod'
 
 dayjs.extend(weekOfYear)
 
-const createGoalCompletionRequest = z.object({
-  goalId: z.string(),
-})
+interface CreateGoalCompletionRequest {
+  goalId: string
+}
 
 export async function createGoalCompletion({
   goalId,
-}: z.infer<typeof createGoalCompletionRequest>) {
+}: CreateGoalCompletionRequest) {
   const currentYear = dayjs().year()
   const currentWeek = dayjs().week()
 

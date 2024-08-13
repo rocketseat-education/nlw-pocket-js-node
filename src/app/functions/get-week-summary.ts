@@ -2,7 +2,7 @@ import { db } from '@/db'
 import { goalCompletions, goals } from '@/db/schema'
 import dayjs from 'dayjs'
 import weekOfYear from 'dayjs/plugin/weekOfYear'
-import { and, desc, eq, sql, sum } from 'drizzle-orm'
+import { and, desc, eq, sql } from 'drizzle-orm'
 
 dayjs.extend(weekOfYear)
 

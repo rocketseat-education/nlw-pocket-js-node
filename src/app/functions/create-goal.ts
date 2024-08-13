@@ -1,16 +1,15 @@
 import { db } from '@/db'
 import { goals } from '@/db/schema'
-import { z } from 'zod'
 
-const createGoalRequest = z.object({
-  title: z.string(),
-  desiredWeeklyFrequency: z.number().int().min(1).max(7),
-})
+interface CreateGoalRequest {
+  title: string
+  desiredWeeklyFrequency: number
+}
 
 export async function createGoal({
   title,
   desiredWeeklyFrequency,
-}: z.infer<typeof createGoalRequest>) {
+}: CreateGoalRequest) {
   const [goal] = await db
     .insert(goals)
     .values({
