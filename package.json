@@ -1,0 +1,29 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch --env-file .env src/http/server.ts",
+    "seed": "tsx --env-file .env src/db/seed.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@biomejs/biome": "1.8.3",
+    "@types/node": "22.2.0",
+    "drizzle-kit": "0.24.0",
+    "tsx": "4.17.0",
+    "typescript": "5.5.4"
+  },
+  "dependencies": {
+    "@paralleldrive/cuid2": "2.2.2",
+    "dayjs": "1.11.12",
+    "drizzle-orm": "0.33.0",
+    "fastify": "4.28.1",
+    "fastify-type-provider-zod": "2.0.0",
+    "postgres": "3.4.4",
+    "zod": "3.23.8"
+  }
+}
