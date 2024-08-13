@@ -2,7 +2,7 @@ import { db } from '@/db'
 import { goalCompletions, goals } from '@/db/schema'
 import dayjs from 'dayjs'
 import weekOfYear from 'dayjs/plugin/weekOfYear'
-import { and, eq, sql, sum } from 'drizzle-orm'
+import { and, desc, eq, sql, sum } from 'drizzle-orm'
 
 dayjs.extend(weekOfYear)
 
@@ -38,6 +38,7 @@ export async function getWeekSummary() {
         ),
       })
       .from(goalCompletions)
+      .orderBy(desc(goalCompletions.createdAt))
       .innerJoin(goals, eq(goals.id, goalCompletions.goalId))
       .where(
         and(
@@ -81,7 +82,7 @@ export async function getWeekSummary() {
       total: sql<number> /*sql*/`
         (SELECT SUM(${goalsCreatedUpToWeek.desiredWeeklyFrequency}) FROM ${goalsCreatedUpToWeek})::DECIMAL
       `.mapWith(Number),
-      summary: sql<Summary> /*sql*/`
+      goalsPerDay: sql<Summary> /*sql*/`
         JSON_OBJECT_AGG(${goalsCompletedByWeekDay.completionDate}, ${goalsCompletedByWeekDay.completions})
       `,
     })

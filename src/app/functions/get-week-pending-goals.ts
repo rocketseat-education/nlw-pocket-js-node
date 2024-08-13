@@ -2,7 +2,7 @@ import { db } from '@/db'
 import { goalCompletions, goals } from '@/db/schema'
 import dayjs from 'dayjs'
 import weekOfYear from 'dayjs/plugin/weekOfYear'
-import { and, count, eq, sql } from 'drizzle-orm'
+import { and, asc, count, eq, sql } from 'drizzle-orm'
 
 dayjs.extend(weekOfYear)
 
@@ -50,6 +50,7 @@ export async function getWeekPendingGoals() {
         ),
     })
     .from(goalsCreatedUpToWeek)
+    .orderBy(asc(goalsCreatedUpToWeek.createdAt))
     .leftJoin(
       goalCompletionCounts,
       eq(goalsCreatedUpToWeek.id, goalCompletionCounts.goalId)
