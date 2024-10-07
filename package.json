@@ -1,10 +1,16 @@
 {
   "name": "server",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch --env-file .env src/http/server.ts",
-    "seed": "tsx --env-file .env src/db/seed.ts"
+    "seed": "tsx --env-file .env src/db/seed.ts",
+    "pretest": "npm run db:migrate:test",
+    "pretest:watch": "npm run db:migrate:test",
+    "db:migrate:test": "dotenv -e .env.test -- drizzle-kit migrate",
+    "test": "dotenv -e .env.test -- vitest run",
+    "test:watch": "dotenv -e .env.test -- vitest"
   },
   "keywords": [],
   "author": "",
@@ -24,9 +30,13 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
+    "@faker-js/faker": "9.0.3",
     "@types/node": "22.2.0",
+    "dotenv-cli": "7.4.2",
     "drizzle-kit": "0.24.0",
     "tsx": "4.17.0",
-    "typescript": "5.5.4"
+    "typescript": "5.5.4",
+    "vite-tsconfig-paths": "5.0.1",
+    "vitest": "2.1.2"
   }
 }

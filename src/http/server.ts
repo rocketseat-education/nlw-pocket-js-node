@@ -9,6 +9,9 @@ import {
   validatorCompiler,
 } from 'fastify-type-provider-zod'
 
+import { writeFile } from 'node:fs/promises'
+import { resolve } from 'node:path'
+import { env } from '../env'
 import { createCompletionRoute } from './routes/create-completion'
 import { createGoalRoute } from './routes/create-goal'
 import { getPendingGoalsRoute } from './routes/get-pending-goals'
@@ -42,10 +45,19 @@ app.register(createCompletionRoute)
 app.register(getPendingGoalsRoute)
 app.register(getWeekSummaryRoute)
 
-app
-  .listen({
-    port: 3333,
+app.listen({ port: 3333 }).then(() => {
+  console.log('HTTP server running!')
+})
+
+if (env.NODE_ENV === 'development') {
+  const spec = './swagger.json'
+  const specFile = resolve(__dirname, '../..', spec)
+
+  app.ready(() => {
+    const apiSpec = JSON.stringify(app.swagger() || {}, null, 2)
+
+    writeFile(specFile, apiSpec).then(() => {
+      console.log(`Swagger specification file write to ${spec}`)
+    })
   })
-  .then(() => {
-    console.log('HTTP server running!')
-  })
+}
