@@ -1,4 +1,5 @@
 import { makeGoal } from '@/test/factories/make-goal'
+import { makeGoalCompletion } from '@/test/factories/make-goal-completion'
 import { describe, expect, it } from 'vitest'
 import { createGoalCompletion } from './create-goal-completion'
 
@@ -16,5 +17,19 @@ describe('create goal completion', () => {
         goalId: goal.id,
       }),
     })
+  })
+
+  it('should not be able to complete a goal more times then it expects', async () => {
+    const goal = await makeGoal({
+      desiredWeeklyFrequency: 1,
+    })
+
+    await makeGoalCompletion({ goalId: goal.id })
+
+    await expect(
+      createGoalCompletion({
+        goalId: goal.id,
+      })
+    ).rejects.toThrow()
   })
 })
