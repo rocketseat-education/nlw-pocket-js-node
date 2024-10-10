@@ -11,6 +11,7 @@ import {
 
 import { writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
+import { fastifyJwt } from '@fastify/jwt'
 import { env } from '../env'
 import { createCompletionRoute } from './routes/create-completion'
 import { createGoalRoute } from './routes/create-goal'
@@ -21,6 +22,10 @@ const app = fastify().withTypeProvider<ZodTypeProvider>()
 
 app.register(fastifyCors, {
   origin: '*',
+})
+
+app.register(fastifyJwt, {
+  secret: env.JWT_SECRET,
 })
 
 app.setValidatorCompiler(validatorCompiler)

@@ -11,8 +11,7 @@ export async function makeUser(
     .values({
       name: faker.person.fullName(),
       email: faker.internet.email(),
-      externalAccountId:
-        Date.now() + faker.number.int({ min: 0, max: 1_000_000 }),
+      externalAccountId: faker.number.int({ min: 0, max: 1_000_000 }),
       avatarUrl: faker.image.avatarGitHub(),
       ...overrides,
     })
