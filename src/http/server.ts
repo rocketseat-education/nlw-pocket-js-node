@@ -15,7 +15,9 @@ import { fastifyJwt } from '@fastify/jwt'
 import { env } from '../env'
 import { createCompletionRoute } from './routes/create-completion'
 import { createGoalRoute } from './routes/create-goal'
+import { getGamificationStatusRoute } from './routes/get-gamification-status'
 import { getPendingGoalsRoute } from './routes/get-pending-goals'
+import { getProfileRoute } from './routes/get-profile'
 import { getWeekSummaryRoute } from './routes/get-week-summary'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
@@ -49,6 +51,8 @@ app.register(createGoalRoute)
 app.register(createCompletionRoute)
 app.register(getPendingGoalsRoute)
 app.register(getWeekSummaryRoute)
+app.register(getProfileRoute)
+app.register(getGamificationStatusRoute)
 
 app.listen({ port: 3333 }).then(() => {
   console.log('HTTP server running!')
