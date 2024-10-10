@@ -15,6 +15,34 @@
       "when": 1723573829683,
       "tag": "0001_lively_skaar",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1728563203607,
+      "tag": "0002_ordinary_lilandra",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1728563893826,
+      "tag": "0003_gray_marten_broadcloak",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1728563909758,
+      "tag": "0004_milky_sentinel",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1728563990829,
+      "tag": "0005_watery_ben_urich",
+      "breakpoints": true
     }
   ]
 }
