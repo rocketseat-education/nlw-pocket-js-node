@@ -1,6 +1,6 @@
 import { db } from '@/db'
 import { users } from '@/db/schema'
-import * as github from '@/external/github'
+import * as github from '@/modules/github'
 import { makeUser } from '@/test/factories/make-user'
 import { eq } from 'drizzle-orm'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
