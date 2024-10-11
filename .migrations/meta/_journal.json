@@ -15,6 +15,20 @@
       "when": 1723573829683,
       "tag": "0001_lively_skaar",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1728663897940,
+      "tag": "0002_happy_warpath",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1728663958409,
+      "tag": "0003_polite_wendell_vaughn",
+      "breakpoints": true
     }
   ]
 }
