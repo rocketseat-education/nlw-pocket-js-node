@@ -18,6 +18,7 @@
   "description": "",
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
+    "@faker-js/faker": "^9.0.3",
     "@types/node": "22.2.0",
     "dotenv-cli": "^7.4.2",
     "drizzle-kit": "^0.25.0",
