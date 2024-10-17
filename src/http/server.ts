@@ -16,6 +16,7 @@ import { authenticateFromGithubRoute } from './routes/authenticate-from-github'
 import { fastifyJwt } from '@fastify/jwt'
 import { env } from '../env'
 import { getProfileRoute } from './routes/get-profile'
+import { getUserExperienceAndLevelRoute } from './routes/get-user-experience-and-level'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -50,6 +51,7 @@ app.register(getPendingGoalsRoute)
 app.register(getWeekSummaryRoute)
 app.register(authenticateFromGithubRoute)
 app.register(getProfileRoute)
+app.register(getUserExperienceAndLevelRoute)
 
 app
   .listen({
