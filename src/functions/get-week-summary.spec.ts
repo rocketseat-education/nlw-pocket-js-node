@@ -18,16 +18,19 @@ describe('get week summary', () => {
       userId: user.id,
       title: 'Meditar',
       desiredWeeklyFrequency: 2,
+      createdAt: weekStartsAt,
     })
     const goal2 = await makeGoal({
       userId: user.id,
       title: 'Nadar',
       desiredWeeklyFrequency: 1,
+      createdAt: weekStartsAt,
     })
     const goal3 = await makeGoal({
       userId: user.id,
       title: 'Ler',
       desiredWeeklyFrequency: 3,
+      createdAt: weekStartsAt,
     })
 
     await makeGoalCompletion({
