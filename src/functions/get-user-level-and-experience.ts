@@ -19,7 +19,7 @@ export async function getUserLevelAndExperience({
     .where(eq(users.id, userId))
 
   const level = calculateLevelFromExperience(experience)
-  const experienceToNextLevel = calculateTotalExperienceForLevel(level)
+  const experienceToNextLevel = calculateTotalExperienceForLevel(level + 1)
 
   return {
     experience,

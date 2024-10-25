@@ -2,11 +2,13 @@ import { z } from 'zod'
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { authenticateFromGithubCode } from '../../functions/authenticate-from-github-code'
 import { getUser } from '../../functions/get-user'
+import { authenticateUserHook } from '../hooks/authenticate-user'
 
 export const getProfileRoute: FastifyPluginAsyncZod = async app => {
   app.get(
     '/profile',
     {
+      onRequest: [authenticateUserHook],
       schema: {
         tags: ['auth'],
         description: 'Get authenticated user profile',
